@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="arabic">Arabic :</string>
+    <string name="btnadd">ADD</string>
+    <string name="english">English :</string>
+    <string name="name">Name</string>
 </resources>
