@@ -21,9 +21,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-
+                return new SearchFragment();
             case 1:
-
+                return new AddFragment();
             default:
                 return null;
         }
