@@ -49,4 +49,6 @@ public class Word {
     public void setFrench(String french) {
         this.french = french;
     }
+
+
 }

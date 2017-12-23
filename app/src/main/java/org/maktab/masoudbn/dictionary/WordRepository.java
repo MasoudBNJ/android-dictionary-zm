@@ -33,15 +33,15 @@ public class WordRepository {
     {
         List<Word> words = new ArrayList<>();
         Word word = new Word();
-        word.setEnglish("salam");
-        word.setFrench("salut");
-        word.setArabic("السلام");
-        word.setPersian("سلام");
+        word.setEnglish("Apple");
+        word.setFrench("Pommes");
+        word.setArabic("تفاح");
+        word.setPersian("صیب");
         words.add(word);
         Word word2 = new Word();
-        word2.setEnglish("salam");
-        word2.setFrench("salut");
-        word2.setArabic("السلام");
+        word2.setEnglish("Hello");
+        word2.setFrench("Bonjour");
+        word2.setArabic("مرحبا");
         word2.setPersian("سلام");
         words.add(word2);
         return words;

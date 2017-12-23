@@ -85,6 +85,7 @@ public class WordsListFragment extends Fragment {
 
         recyclerViewWordsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        updateUI();
 
         return view;
     }
