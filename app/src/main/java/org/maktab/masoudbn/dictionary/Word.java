@@ -18,6 +18,15 @@ public class Word {
         wordId = UUID.randomUUID();
     }
 
+    public Word(UUID uuid)
+    {
+        this.wordId = uuid;
+    }
+
+    public UUID getWordId() {
+        return wordId;
+    }
+
     public String getEnglish() {
         return english;
     }

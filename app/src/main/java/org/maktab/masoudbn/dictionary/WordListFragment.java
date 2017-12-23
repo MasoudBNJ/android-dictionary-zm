@@ -16,11 +16,11 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WordsListFragment extends Fragment {
+public class WordListFragment extends Fragment {
 
     RecyclerView recyclerViewWordsList;
     WordAdapter wordAdapter;
-    public WordsListFragment() {
+    public WordListFragment() {
         // Required empty public constructor
     }
 
@@ -80,7 +80,7 @@ public class WordsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_words_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_word_list, container, false);
         recyclerViewWordsList = (RecyclerView) view.findViewById(R.id.recycler_view_words_list);
 
         recyclerViewWordsList.setLayoutManager(new LinearLayoutManager(getActivity()));

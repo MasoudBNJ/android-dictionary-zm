@@ -27,7 +27,7 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         fragmentManager = getFragmentManager();
-        WordsListFragment wordsListFragment = new WordsListFragment();
+        WordListFragment wordsListFragment = new WordListFragment();
         fragmentManager.beginTransaction()
                 .replace(R.id.frame_layout_words_container, wordsListFragment)
                 .commit();

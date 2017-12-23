@@ -17,13 +17,13 @@ public class DictionaryBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create Table" + DictionaryDbSchema.WordTable.NAME + "(" +
-                "_id integer primary key autoincrement," +
-                DictionaryDbSchema.WordTable.Cols.WORD_ID + "," +
-                DictionaryDbSchema.WordTable.Cols.ARABIC + "," +
-                DictionaryDbSchema.WordTable.Cols.ENGLISH + "," +
-                DictionaryDbSchema.WordTable.Cols.FRENCH + "," +
-                DictionaryDbSchema.WordTable.Cols.PERSIAN + "," +
+        db.execSQL("CREATE TABLE " + DictionaryDbSchema.WordTable.NAME + "(" +
+                "_id integer primary key autoincrement, " +
+                DictionaryDbSchema.WordTable.Cols.UUID + ", " +
+                DictionaryDbSchema.WordTable.Cols.ARABIC + ", " +
+                DictionaryDbSchema.WordTable.Cols.ENGLISH + ", " +
+                DictionaryDbSchema.WordTable.Cols.FRENCH + ", " +
+                DictionaryDbSchema.WordTable.Cols.PERSIAN +
                 ")" );
 
     }
