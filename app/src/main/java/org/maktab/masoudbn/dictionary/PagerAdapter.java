@@ -10,11 +10,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class PagerAdapter extends FragmentPagerAdapter {
     int numOfTabs;
+    WordListFragment wordListFragment;
 
 
     public PagerAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
+//        wordListFragment.updateUI();
     }
 
     @Override
@@ -28,6 +30,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
                 return null;
         }
     }
+
 
     @Override
     public int getCount() {

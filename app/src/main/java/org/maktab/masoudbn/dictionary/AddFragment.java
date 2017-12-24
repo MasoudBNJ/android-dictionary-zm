@@ -30,6 +30,8 @@ public class AddFragment extends Fragment {
         edtPersian = (EditText) view.findViewById(R.id.edt_persian_word);
         edtEnglish = (EditText) view.findViewById(R.id.edt_english_word);
         edtFrench = (EditText) view.findViewById(R.id.edt_french_word);
+        edtArabic = (EditText) view.findViewById(R.id.edt_arabic_word);
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,9 +42,16 @@ public class AddFragment extends Fragment {
                 word.setFrench(edtFrench.getText().toString());
                 word.setArabic(edtArabic.getText().toString());
                 wordRepository.addWord(word);
+                refresh();
             }
         });
         return view;
+    }
+    public void refresh(){
+        edtArabic.setText(null);
+        edtEnglish.setText(null);
+        edtFrench.setText(null);
+        edtPersian.setText(null);
     }
 
 }

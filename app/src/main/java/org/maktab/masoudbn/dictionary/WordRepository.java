@@ -21,40 +21,36 @@ public class WordRepository {
     SQLiteDatabase database;
     private Context context;
 
-    public WordRepository(Context context)
-    {
+    public WordRepository(Context context) {
         this.context = context.getApplicationContext();
         database = new DictionaryBaseHelper(this.context).getWritableDatabase();
     }
 
-    public void addWord(Word word)
-    {
+    public void addWord(Word word) {
         ContentValues contentValues = getContentValues(word);
         database.insert(DictionaryDbSchema.WordTable.NAME, null, contentValues);
     }
 
-    public void updateWord(Word newWord)
-    {
+    public void updateWord(Word newWord) {
         ContentValues contentValues = getContentValues(newWord);
         database.update(DictionaryDbSchema.WordTable.NAME, contentValues,
                 DictionaryDbSchema.WordTable.Cols.UUID + " = ?",
                 new String[]{newWord.getWordId().toString()});
     }
 
-    public List<Word> getWords()
-    {
+    public List<Word> getWords() {
         WordCursorWrapper wordCursor = queryWords(null, null);
-        if(wordCursor == null)
+        if (wordCursor == null)
             return null;
 
         List<Word> words = new ArrayList<>();
-        if(wordCursor.getCount() == 0)
+        if (wordCursor.getCount() == 0)
             return words;
 
         try {
             wordCursor.moveToFirst();
 
-            while(!wordCursor.isAfterLast()) {
+            while (!wordCursor.isAfterLast()) {
                 Word word = wordCursor.getWord();
                 words.add(word);
 
@@ -66,8 +62,7 @@ public class WordRepository {
         return words;
     }
 
-    public List<Word> search(String searchWord, Language language)
-    {
+    public List<Word> search(String searchWord, Language language) {
         String whereClause;
         List<Word> words = new ArrayList<>();
 
@@ -89,34 +84,33 @@ public class WordRepository {
                 break;
         }
 
-        String[] whereArgs = new String[] {
+        String[] whereArgs = new String[]{
                 searchWord
         };
 
-        WordCursorWrapper wordCurosr = queryWords(whereClause, whereArgs);
+        WordCursorWrapper wordCursor = queryWords(whereClause, whereArgs);
 
-        if(wordCurosr == null)
+        if (wordCursor == null)
             return null;
-        if(wordCurosr.getCount() == 0)
+        if (wordCursor.getCount() == 0)
             return words;
 
         try {
-            wordCurosr.moveToFirst();
-            while(!wordCurosr.isAfterLast()) {
-                Word word = wordCurosr.getWord();
+            wordCursor.moveToFirst();
+            while (!wordCursor.isAfterLast()) {
+                Word word = wordCursor.getWord();
                 words.add(word);
 
-                wordCurosr.moveToNext();
+                wordCursor.moveToNext();
             }
         } finally {
-            wordCurosr.close();
+            wordCursor.close();
         }
 
         return words;
     }
 
-    public void deleteWord(UUID wordId)
-    {
+    public void deleteWord(UUID wordId) {
         database.delete(DictionaryDbSchema.WordTable.NAME,
                 DictionaryDbSchema.WordTable.Cols.UUID + " = ?",
                 new String[]{wordId.toString()});
@@ -126,13 +120,14 @@ public class WordRepository {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(DictionaryDbSchema.WordTable.Cols.UUID, word.getWordId().toString());
-        contentValues.put(DictionaryDbSchema.WordTable.Cols.ARABIC, word.getWordId().toString());
-        contentValues.put(DictionaryDbSchema.WordTable.Cols.ENGLISH, word.getWordId().toString());
-        contentValues.put(DictionaryDbSchema.WordTable.Cols.FRENCH, word.getWordId().toString());
-        contentValues.put(DictionaryDbSchema.WordTable.Cols.PERSIAN, word.getWordId().toString());
+        contentValues.put(DictionaryDbSchema.WordTable.Cols.ARABIC, word.getArabic());
+        contentValues.put(DictionaryDbSchema.WordTable.Cols.ENGLISH, word.getEnglish());
+        contentValues.put(DictionaryDbSchema.WordTable.Cols.FRENCH, word.getFrench());
+        contentValues.put(DictionaryDbSchema.WordTable.Cols.PERSIAN, word.getPersian());
 
         return contentValues;
     }
+
     private WordCursorWrapper queryWords(String whereClause, String[] whereArgs) {
         Cursor cursor = database.query(DictionaryDbSchema.WordTable.NAME, null, whereClause, whereArgs, null, null, null);
         return new WordCursorWrapper(cursor);

@@ -90,7 +90,13 @@ public class WordListFragment extends Fragment {
         return view;
     }
 
-    private void updateUI()
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    public void updateUI()
     {
         List<Word> words = new WordRepository(getActivity()).getWords();
 
