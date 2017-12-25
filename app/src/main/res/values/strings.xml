@@ -8,6 +8,7 @@
     <string name="french">French:</string>
     <string name="persian">Persian:</string>
     <string name="btnadd">Add</string>
+    <string name="btnedit">Edit</string>
     <string name="name">Name</string>
 
     <string name="to_arabic">Arabic</string>
@@ -16,4 +17,5 @@
     <string name="to_persian">Persian</string>
 
     <string name="add_toast">The word added to dictionary.</string>
+    <string name="edit_toast">The word edited to dictionary.</string>
 </resources>
