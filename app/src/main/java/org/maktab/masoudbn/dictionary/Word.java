@@ -1,12 +1,13 @@
 package org.maktab.masoudbn.dictionary;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by MasoudBN on 23/12/2017.
  */
 
-public class Word {
+public class Word{
     private UUID wordId;
     private String english;
     private String persian;

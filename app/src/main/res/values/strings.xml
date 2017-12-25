@@ -9,4 +9,11 @@
     <string name="persian">Persian:</string>
     <string name="btnadd">Add</string>
     <string name="name">Name</string>
+
+    <string name="to_arabic">Arabic</string>
+    <string name="to_english">English</string>
+    <string name="to_french">French</string>
+    <string name="to_persian">Persian</string>
+
+    <string name="add_toast">The word added to dictionary.</string>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class AddFragment extends Fragment {
@@ -43,6 +44,7 @@ public class AddFragment extends Fragment {
                 word.setArabic(edtArabic.getText().toString());
                 wordRepository.addWord(word);
                 refresh();
+                Toast.makeText(getActivity(), getString(R.string.add_toast), Toast.LENGTH_SHORT).show();
             }
         });
         return view;
@@ -52,6 +54,7 @@ public class AddFragment extends Fragment {
         edtEnglish.setText(null);
         edtFrench.setText(null);
         edtPersian.setText(null);
+
     }
 
 }

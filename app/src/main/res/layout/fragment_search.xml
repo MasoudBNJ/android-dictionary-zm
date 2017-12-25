@@ -7,22 +7,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/colorOrange"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="2dp"
-            tools:ignore="NestedWeights">
+            android:padding="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="word: "
+                android:textColor="@color/colorBlue"
                 android:textSize="24sp" />
 
             <EditText
@@ -33,59 +33,120 @@
                 android:textSize="18sp"
                 tools:ignore="TextFields" />
 
-            <Button
-                android:id="@+id/btn_search"
-                android:layout_width="42dp"
-                android:layout_height="wrap_content"
-                android:text="B"
-                android:textSize="18sp" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="2dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From:" />
+
             <RadioGroup
-                android:layout_width="match_parent"
+                android:id="@+id/rdg_from_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|start"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <RadioButton
+                    android:id="@+id/rdb_from_english"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:checked="true"
+                    android:onClick="onClick"
+                    android:text="@string/to_english" />
+
+                <RadioButton
+                    android:id="@+id/rdb_from_persain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:text="@string/to_persian" />
+
+                <RadioButton
+                    android:id="@+id/rdb_from_french"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:text="@string/to_french" />
+
+                <RadioButton
+                    android:id="@+id/rdb_from_arabic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:text="@string/to_arabic" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To:" />
+
+            <RadioGroup
+                android:id="@+id/rdg_to_language"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
 
                 <RadioButton
-                    android:id="@+id/rdb_persain"
+                    android:id="@+id/rdb_to_persain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Persian" />
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:checked="true"
+                    android:text="@string/to_persian" />
 
                 <RadioButton
-                    android:id="@+id/rdb_english"
+                    android:id="@+id/rdb_to_english"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="English" />
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:text="@string/to_english" />
 
                 <RadioButton
-                    android:id="@+id/rdb_french"
+                    android:id="@+id/rdb_to_french"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Franch" />
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:text="@string/to_french" />
 
                 <RadioButton
-                    android:id="@+id/rdb_arabic"
+                    android:id="@+id/rdb_to_arabic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Arabic" />
+                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:text="@string/to_arabic" />
             </RadioGroup>
 
 
         </LinearLayout>
+
 
     </LinearLayout>
 
@@ -94,7 +155,8 @@
         android:id="@+id/frame_layout_words_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6">
+        android:layout_weight="6"
+        android:background="@color/colorBlue">
 
     </FrameLayout>
 

@@ -68,24 +68,24 @@ public class WordRepository {
 
         switch (language) {
             case ARABIC:
-                whereClause = DictionaryDbSchema.WordTable.Cols.ARABIC + " = ?";
+                whereClause = DictionaryDbSchema.WordTable.Cols.ARABIC + " LIKE ?";
                 break;
             case ENGLISH:
-                whereClause = DictionaryDbSchema.WordTable.Cols.ENGLISH + " = ?";
+                whereClause = DictionaryDbSchema.WordTable.Cols.ENGLISH + " LIKE ?";
                 break;
             case FRENCH:
-                whereClause = DictionaryDbSchema.WordTable.Cols.FRENCH + " = ?";
+                whereClause = DictionaryDbSchema.WordTable.Cols.FRENCH + " LIKE ?";
                 break;
             case PERSIAN:
-                whereClause = DictionaryDbSchema.WordTable.Cols.PERSIAN + " = ?";
+                whereClause = DictionaryDbSchema.WordTable.Cols.PERSIAN + " LIKE ?";
                 break;
             default:
-                whereClause = DictionaryDbSchema.WordTable.Cols.ENGLISH + " = ?";
+                whereClause = DictionaryDbSchema.WordTable.Cols.ENGLISH + " LIKE ?";
                 break;
         }
 
         String[] whereArgs = new String[]{
-                searchWord
+                searchWord + "%"
         };
 
         WordCursorWrapper wordCursor = queryWords(whereClause, whereArgs);
@@ -109,6 +109,7 @@ public class WordRepository {
 
         return words;
     }
+
 
     public void deleteWord(UUID wordId) {
         database.delete(DictionaryDbSchema.WordTable.NAME,

@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBlue"
         android:orientation="vertical"
         android:visibility="visible">
 
@@ -126,6 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/colorOrange"
             android:foregroundGravity="bottom"
             android:text="@string/btnadd" />
     </LinearLayout>

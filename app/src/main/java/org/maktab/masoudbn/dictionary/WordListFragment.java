@@ -18,11 +18,21 @@ import java.util.List;
  */
 public class WordListFragment extends Fragment {
 
-    RecyclerView recyclerViewWordsList;
-    WordAdapter wordAdapter;
+    private RecyclerView recyclerViewWordsList;
+    private WordAdapter wordAdapter;
+    private Language fromLanguage;
+    private Language toLanguage;
+
     public WordListFragment() {
         // Required empty public constructor
     }
+
+    public static WordListFragment newInstance()
+    {
+        WordListFragment wordListFragment = new WordListFragment();
+        return wordListFragment;
+    }
+
 
     public class WordHolder extends RecyclerView.ViewHolder {
         private Word word;
@@ -38,8 +48,26 @@ public class WordListFragment extends Fragment {
         public void setUI(Word word)
         {
             this.word = word;
-            tvWord.setText(word.getEnglish());
-            tvMeaning.setText(word.getPersian());
+            String fromWord, toWord;
+            if(fromLanguage==Language.ARABIC)
+                fromWord = word.getArabic();
+            else if(fromLanguage==Language.ENGLISH)
+                fromWord = word.getEnglish();
+            else if(fromLanguage==Language.FRENCH)
+                fromWord = word.getFrench();
+            else
+                fromWord = word.getPersian();
+
+            if(toLanguage==Language.ARABIC)
+                toWord = word.getArabic();
+            else if(toLanguage==Language.ENGLISH)
+                toWord = word.getEnglish();
+            else if(toLanguage==Language.FRENCH)
+                toWord = word.getFrench();
+            else
+                toWord = word.getPersian();
+            tvWord.setText(fromWord);
+            tvMeaning.setText(toWord);
         }
     }
 
@@ -85,29 +113,25 @@ public class WordListFragment extends Fragment {
 
         recyclerViewWordsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        updateUI();
-
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        updateUI();
     }
 
-    public void updateUI()
+    public void updateUI(List<Word> words, Language fromLanguage, Language toLanguage)
     {
-        List<Word> words = new WordRepository(getActivity()).getWords();
-
-        if(wordAdapter == null) {
+        this.fromLanguage = fromLanguage;
+        this.toLanguage = toLanguage;
+        if (wordAdapter == null) {
             wordAdapter = new WordAdapter(words);
             recyclerViewWordsList.setAdapter(wordAdapter);
         } else {
             wordAdapter.setWords(words);
             wordAdapter.notifyDataSetChanged();
         }
-
     }
 
 }
