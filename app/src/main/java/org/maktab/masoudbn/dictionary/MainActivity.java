@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements EditDeleteFragment.Callbacks{
     private TabLayout tabLayoutTabs;
     private ViewPager viewPagerTabs;
     private PagerAdapter pagerAdapter;
@@ -30,5 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void updateUI() {
+        SearchFragment.newInstance().updateUI();
     }
 }

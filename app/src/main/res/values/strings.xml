@@ -17,5 +17,5 @@
     <string name="to_persian">Persian</string>
 
     <string name="add_toast">The word added to dictionary.</string>
-    <string name="edit_toast">The word edited to dictionary.</string>
+    <string name="edit_toast">The word is edited successfully.</string>
 </resources>

@@ -27,13 +27,15 @@ public class WordListFragment extends Fragment {
     private Language fromLanguage;
     private Language toLanguage;
     private EditDeleteFragment editDeleteFragment;
+    private static WordListFragment wordListFragment;
 
     public WordListFragment() {
         // Required empty public constructor
     }
 
     public static WordListFragment newInstance() {
-        WordListFragment wordListFragment = new WordListFragment();
+        if(wordListFragment == null)
+            wordListFragment = new WordListFragment();
         return wordListFragment;
     }
 

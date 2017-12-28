@@ -38,6 +38,7 @@ public class WordRepository {
                 new String[]{newWord.getWordId().toString()});
     }
 
+
     public List<Word> getWords() {
         WordCursorWrapper wordCursor = queryWords(null, null);
         if (wordCursor == null)
@@ -61,7 +62,29 @@ public class WordRepository {
         }
         return words;
     }
+    public Word getWord(UUID id) {
+        Word word;
+        String whereClause = DictionaryDbSchema.WordTable.Cols.UUID + " = ?";
+        String[] whereArgs = new String[]{
+                id.toString()
+        };
 
+        WordCursorWrapper wordCursor = queryWords(whereClause, whereArgs);
+
+        if (wordCursor == null)
+            return null;
+        if (wordCursor.getCount() == 0)
+            return null;
+
+        try {
+            wordCursor.moveToFirst();
+            word = wordCursor.getWord();
+        } finally {
+            wordCursor.close();
+        }
+
+        return word;
+    }
     public List<Word> search(String searchWord, Language language) {
         String whereClause;
         List<Word> words = new ArrayList<>();

@@ -44,6 +44,7 @@ public class SearchFragment extends Fragment {
     private RadioGroup rdgToLanguages;
     private Language language;
     private WordRepository wordRepository;
+    private static SearchFragment searchFragment;
     WordListFragment wordsListFragment;
 
     public SearchFragment() {
@@ -59,12 +60,18 @@ public class SearchFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_search, container, false);
         fragmentManager = getFragmentManager();
-        wordsListFragment= new WordListFragment();
+        wordsListFragment= WordListFragment.newInstance();
         fragmentManager.beginTransaction()
                 .add(R.id.frame_layout_words_container, wordsListFragment)
                 .commit();
@@ -154,10 +161,15 @@ public class SearchFragment extends Fragment {
     }
 
 
-
     private void search(String search) {
         List<Word> words = wordRepository.search(search, getFromLanguage());
         updateList(words);
+    }
+
+    public static SearchFragment newInstance() {
+        if(searchFragment == null)
+            searchFragment = new SearchFragment();
+        return searchFragment;
     }
 
     private Language getFromLanguage() {
@@ -190,6 +202,14 @@ public class SearchFragment extends Fragment {
         wordsListFragment.updateUI(words, getFromLanguage(), getToLanguage());
     }
 
+    public void updateUI() {
+
+        if(edtSearchWord.getText().length() >= 2) {
+            search(edtSearchWord.getText().toString());
+        } else {
+            updateList(new ArrayList<Word>());
+        }
+    }
 
     @Override
     public void onResume() {

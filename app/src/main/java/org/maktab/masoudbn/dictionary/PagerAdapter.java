@@ -23,7 +23,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new SearchFragment();
+                return SearchFragment.newInstance();
             case 1:
                 return new AddFragment();
             default:
