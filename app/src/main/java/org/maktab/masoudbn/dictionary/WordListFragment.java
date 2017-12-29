@@ -26,6 +26,7 @@ public class WordListFragment extends Fragment {
     private WordAdapter wordAdapter;
     private Language fromLanguage;
     private Language toLanguage;
+    private List<Word> words;
     private EditDeleteFragment editDeleteFragment;
     private static WordListFragment wordListFragment;
 
@@ -49,6 +50,7 @@ public class WordListFragment extends Fragment {
             super(itemView);
             tvWord = (TextView) itemView.findViewById(R.id.tv_word);
             tvMeaning = (TextView) itemView.findViewById(R.id.tv_meaning);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -133,8 +135,10 @@ public class WordListFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
+    public void onResume()
+    {
         super.onResume();
+
     }
 
     public void updateUI(List<Word> words, Language fromLanguage, Language toLanguage) {

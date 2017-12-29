@@ -43,6 +43,8 @@ public class SearchFragment extends Fragment {
     private RadioGroup rdgFromLanguages;
     private RadioGroup rdgToLanguages;
     private Language language;
+    private String search;
+    private List<Word> wordss;
     private WordRepository wordRepository;
     private static SearchFragment searchFragment;
     WordListFragment wordsListFragment;
